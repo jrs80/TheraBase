@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Provider>
+@{
+    ViewData["Title"] = "Provider Database";
+}
+
+
+
+<table class=table>
+
+    <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Specialties</th>
+        <th>Age</th>
+        <th>Gender</th>
+        @*<th>Availability?</th>*@
+    </tr>
+
+    @foreach(var p in Model) {
+    <tr>
+      
+        <td><a href=/Provider/ViewProvider/@p.EmployeeID>@p.EmployeeID</a></td>
+        <td>@p.FirstName</td>
+        <td>@p.LastName</td>
+        <td>@p.Specialties</td>
+        <td>@p.Age</td>
+        <td>@p.Gender</td>
+        @*<td>@p.Availability</td>*@
+    </tr>
+    }
+
+</table>
+
+
+

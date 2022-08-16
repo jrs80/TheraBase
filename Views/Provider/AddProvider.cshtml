@@ -1,0 +1,34 @@
+﻿@model Provider
+
+<h3>To add a provider to the provider database, please enter the following information.</h3>
+
+@using(Html.BeginForm("AddProviderToDatabase", "Provider", "Post")) {
+    <label asp-for="EmployeeID" class="control-label">Employee ID</label>
+    <input type="number" name="EmployeeID" class="form-control" value="@Model.EmployeeID" />
+    
+    <label asp-for="FirstName" class="control-label">First Name</label>
+    <input type="text" name="FirstName" class="form-control" value="@Model.FirstName" />
+
+    <label asp-for="LastName" class="control-label">Last Name</label>
+    <input type="text" name="LastName" class="form-control" value="@Model.LastName" />
+
+    <label asp-for="Specialties" class="control-label">Specialties</label>
+    <input type="text" name="Specialties" class="form-control" value="@Model.Specialties" />
+
+    <label asp-for="Age" class="control-label">Age</label>
+    <input type="number" step="1" name="Age" class="form-control" value="@Model.Age" />
+
+    <label asp-for="Gender" class="control-label" name=Gender>Gender:</label>
+    <br />
+    <label for="GenderMale">Male</label>
+    <input type="radio" name="GenderMale" value="@Model.Gender" />
+    <label for="GenderFemale">Female</label>
+    <input type="radio" name="GenderFemale" value="@Model.Gender" />
+    <label for="GenderOther">Other</label>
+    <input type="radio" name="GenderOther" value="@Model.Gender" />
+
+    @* <label asp-for="Availability" class="control-label">Availability</label>
+    <input type="checkbox" name="Availability" class="form-control" value="@Model.Availability" />*@
+
+    <input type="submit" value="Add Provider" class="btn btn-primary" />
+}

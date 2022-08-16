@@ -1,0 +1,29 @@
+﻿@model Provider
+
+<h2>Provider Information</h2>
+<h2><span id="providerName">@Model.FirstName @Model.LastName</span></h2>
+<p></p>
+<ul>
+   <li><a href=/Provider/UpdateProvider/@Model.EmployeeID>Update this provider's information</a></li>
+   <li><a href=/Provider/DeleteProvider/@Model.EmployeeID onclick="return confirm('Deleting a provider cannot be undone.  Are you sure you want to delete this provider?')">Delete this provider</a>
+</ul>
+
+
+<table class="table">
+   <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Specialties</th>
+        <th>Age</th>
+        <th>Gender</th>
+   </tr>
+   <tr>
+        <td>@Model.EmployeeID</td>
+        <td>@Model.FirstName</td>
+        <td>@Model.LastName</td>
+        <td>@Model.Specialties</td>
+        <td>@Model.Age</td>
+        <td>@Model.Gender</td>
+   </tr>
+</table>
