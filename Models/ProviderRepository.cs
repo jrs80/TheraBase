@@ -26,8 +26,8 @@ namespace TherapistDatabase.Models
                                   new
                                   {
                                       empID = newProv.EmployeeID,
-                                      firstName = newProv.FirstName,
                                       lastName = newProv.LastName,
+                                      firstName = newProv.FirstName,
                                       specialties = newProv.Specialties,
                                       age = newProv.Age,
                                       gender = newProv.Gender

@@ -3,6 +3,8 @@ using System.Data;
 using Dapper;
 using MySql.Data.MySqlClient;
 using TherapistDatabase.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace TherapistDatabase
 {
@@ -35,8 +37,10 @@ namespace TherapistDatabase
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseAuthentication();
             app.UseEndpoints(endpoints => {
-                endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");                
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
                 });
         }
     }
