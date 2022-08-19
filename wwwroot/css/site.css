@@ -8,11 +8,40 @@ html {
   }
 }
 
+
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+}
+nav {
+    background-color: #EFEFEF; /* neutral (gray) */
+}
+body {
+    margin-bottom: 60px;
+    background-color: #e3f2fd; /* light lilac? */
+      
 }
 
-body {
-  margin-bottom: 60px;
+
+.btn {
+    color: white;
+    background-color: #FF3B3F;   /* watermelon (red) */
+    margin: 2px;
+}
+
+tr:nth-child(even) {
+    background-color:  #CAEBF2; /* sky (blue) */
+}
+
+tr:nth-child(odd) {
+    background-color: #EFEFEF /*#A9A9A9; carbon (gray) */
+}
+
+a {
+    color: #FF3B3F;
+    text-decoration: unset;
+}
+
+.form-control {
+    color: #EFEFEF;
 }

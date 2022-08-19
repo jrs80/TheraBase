@@ -22,15 +22,14 @@
 
     <label asp-for="Gender" class="control-label">Gender:</label>
     <br />
-    <label for="GenderMale">Male</label>
-    <input type="radio" name="GenderMale" value="@Model.Gender" />
-    <label for="GenderFemale">Female</label>
-    <input type="radio" name="GenderFemale" value="@Model.Gender" />
-    <label for="GenderOther">Other</label>
-    <input type="radio" name="GenderOther" value="@Model.Gender" />
-
-   @* <label asp-for="Availability" class="control-label">Availability</label>
-    <input type="checkbox" name="Availability" class="form-control" value="@Model.Availability" />*@
+        <label for="GenderMale">Male</label>
+        <input type="radio" name="GenderMale" value="@Model.Gender" />
+        
+        <label for="GenderFemale">Female</label>
+        <input type="radio" name="GenderFemale" value="@Model.Gender" />
+        
+        <label for="GenderOther">Other</label>
+        <input type="radio" name="GenderOther" value="@Model.Gender" />
 
     <input type="submit" value="Update Provider" class="btn btn-primary" />
 }
