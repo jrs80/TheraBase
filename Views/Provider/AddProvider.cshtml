@@ -1,11 +1,12 @@
 ﻿@model Provider
 
-<h3>To add a provider to the provider database, please enter the following information.</h3>
+<h3>To add a provider to the provider database, please enter the following information.  
+    Note that an employee ID will be automatically generated for the provider.</h3>
 
 @using(Html.BeginForm("AddProviderToDatabase", "Provider", "Post")) {
-    <label asp-for="EmployeeID" class="control-label">Employee ID</label>
+   @* <label asp-for="EmployeeID" class="control-label">Employee ID</label>
     <input type="number" name="EmployeeID" class="form-control" value="@Model.EmployeeID" />
-    
+    *@
     <label asp-for="FirstName" class="control-label">First Name</label>
     <input type="text" name="FirstName" class="form-control" value="@Model.FirstName" />
 

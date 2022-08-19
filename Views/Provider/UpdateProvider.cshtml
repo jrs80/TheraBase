@@ -20,16 +20,16 @@
     <label asp-for="Age" class="control-label">Age</label>
     <input type="number" step="1" name="Age" class="form-control" value="@Model.Age" />
 
-    <label asp-for="Gender" class="control-label">Gender:</label>
+    <label asp-for="Gender" class="control-label" value="@Model.Gender">Gender:</label>
     <br />
         <label for="GenderMale">Male</label>
-        <input type="radio" name="GenderMale" value="@Model.Gender" />
+        <input type="radio" name="GenderMale" />
         
         <label for="GenderFemale">Female</label>
-        <input type="radio" name="GenderFemale" value="@Model.Gender" />
+        <input type="radio" name="GenderFemale" />
         
-        <label for="GenderOther">Other</label>
-        <input type="radio" name="GenderOther" value="@Model.Gender" />
+        <label for="GenderOther">Nonbinary/Other</label>
+        <input type="radio" name="GenderOther" />
 
     <input type="submit" value="Update Provider" class="btn btn-primary" />
 }

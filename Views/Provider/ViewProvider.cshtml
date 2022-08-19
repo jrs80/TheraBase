@@ -1,6 +1,6 @@
 ﻿@model Provider
 
-<h2><div id="providerName">Information for provider: @Model.FirstName @Model.LastName</div></h2>
+<div id="providerName"><h2>Information for provider: @Model.FirstName @Model.LastName</h2></div>
 <p></p>
 
 
@@ -10,7 +10,8 @@
 
 <form>
     <button type="submit" class="btn btn-sm"  formaction="/Provider/UpdateProvider/@Model.EmployeeID">Update this provider's information</button>
-    <button type="submit" class="btn btn-sm"  formaction="/Provider/DeleteProvider/@Model.EmployeeID" onclick="return confirm('Deleting a provider cannot be undone.  Are you sure you want to delete this provider?')">Delete this provider</button>
+    <button type="submit" class="btn btn-sm"  formaction="/Provider/DeleteProvider/@Model.EmployeeID" 
+            onclick="return confirm('Deleting a provider cannot be undone.  Are you sure you want to delete this provider?')">Delete this provider</button>
 </form>
 
 <table class="table" style="margin-top: 20px">

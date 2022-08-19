@@ -45,3 +45,18 @@ a {
 .form-control {
     color: #EFEFEF;
 }
+
+
+.release_notes {
+    margin-top: 100px;
+    text-align: left;
+    color: gray;
+}
+.release_notes_list{
+    text-indent: each-line;
+    text-align:left;
+    color: gray;
+}
+.navbar-brand {
+    color: #FF3B3F;
+}

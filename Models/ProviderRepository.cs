@@ -21,13 +21,12 @@ namespace TherapistDatabase.Models
 
         public void AddProvider(Provider newProv)
         {
-            dbConnection.Execute("INSERT INTO providers (employeeid, lastname, firstname, specialties, age, gender) " +
-                                 "VALUES (@empID,@firstName,@lastName,@specialties,@age,@gender)",
+            dbConnection.Execute("INSERT INTO providers (firstname, lastname, specialties, age, gender) " +
+                                 "VALUES (@firstName,@lastName,@specialties,@age,@gender)",
                                   new
                                   {
-                                      empID = newProv.EmployeeID,
-                                      lastName = newProv.LastName,
                                       firstName = newProv.FirstName,
+                                      lastName = newProv.LastName,
                                       specialties = newProv.Specialties,
                                       age = newProv.Age,
                                       gender = newProv.Gender
@@ -51,7 +50,6 @@ namespace TherapistDatabase.Models
                                      gender = provider.Gender,
                                      specialties = provider.Specialties,
                                      empid = provider.EmployeeID
-                                     //availability = provToUpdate.Availability
                                  }) ;
         }
     }
