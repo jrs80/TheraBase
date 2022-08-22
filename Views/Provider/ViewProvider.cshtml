@@ -48,21 +48,3 @@
  *           for implementation details.
  *@
 <button class="btn btn-sm" onclick="Calendly.showPopupWidget('https://calendly.com/providerbase/therapy'); return false;">Make Appointment</button>
-
-
-@* TODO: Possibly add more functionality/event handling:
-<script>
-
-    function isCalendlyEvent(e) {
-        return e.origin === "https://calendly.com"
-               && e.data.event.indexOf("calendly.") === 0;
-    };
-
-    window.addEventListener( "message",
-        function(e) {
-            if(isCalendlyEvent(e)) {
-                    console.log("Booking successful. Data: ");
-                    console.log(e.data);
-        }} );
-
-</script> *@

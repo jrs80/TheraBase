@@ -42,9 +42,11 @@ namespace TherapistDatabase.Controllers
             return View(p);
         }
 
-
+        [HttpPost]
         public IActionResult UpdateProviderToDatabase(Provider provider)
         {
+
+            //old version:
             repo.UpdateProvider(provider);
             return RedirectToAction("ViewProvider", new { id = provider.EmployeeID });
         }

@@ -8,28 +8,19 @@
     <input type="number" name="EmployeeID" class="form-control" value="@Model.EmployeeID" />
     *@
     <label asp-for="FirstName" class="control-label">First Name</label>
-    <input type="text" name="FirstName" class="form-control" value="@Model.FirstName" />
+    <input type="text" autofocus required name="FirstName" class="form-control" placeholder="@Model.FirstName" />
 
     <label asp-for="LastName" class="control-label">Last Name</label>
-    <input type="text" name="LastName" class="form-control" value="@Model.LastName" />
+    <input type="text" required name="LastName" class="form-control" placeholder="@Model.LastName" />
 
     <label asp-for="Specialties" class="control-label">Specialties</label>
-    <input type="text" name="Specialties" class="form-control" value="@Model.Specialties" />
+    <input type="text" required name="Specialties" class="form-control" placeholder="@Model.Specialties" />
 
     <label asp-for="Age" class="control-label">Age</label>
     <input type="number" step="1" name="Age" class="form-control" value="@Model.Age" />
 
-    <label asp-for="Gender" class="control-label" name=Gender>Gender:</label>
+    <select  asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderCategories>()" class="control-label" name="Gender">Gender:</select>
     <br />
-    <label for="GenderMale">Male</label>
-    <input type="radio" name="GenderMale" value="@Model.Gender" />
-    <label for="GenderFemale">Female</label>
-    <input type="radio" name="GenderFemale" value="@Model.Gender" />
-    <label for="GenderOther">Other</label>
-    <input type="radio" name="GenderOther" value="@Model.Gender" />
-
-    @* <label asp-for="Availability" class="control-label">Availability</label>
-    <input type="checkbox" name="Availability" class="form-control" value="@Model.Availability" />*@
 
     <input type="submit" value="Add Provider" class="btn btn-primary" />
 }

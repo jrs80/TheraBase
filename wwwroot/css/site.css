@@ -43,7 +43,10 @@ a {
 }
 
 .form-control {
-    color: #EFEFEF;
+    color: black;
+}
+.form-control::placeholder {
+    color: lightgray;
 }
 
 

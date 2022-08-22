@@ -29,8 +29,10 @@ namespace TherapistDatabase.Models
                                       lastName = newProv.LastName,
                                       specialties = newProv.Specialties,
                                       age = newProv.Age,
-                                      gender = newProv.Gender
-                                  });
+                                      gender = newProv.Gender == GenderCategories.Male ? "Male"
+                                                : newProv.Gender == GenderCategories.Female ? "Female"
+                                                : "Nonbinary"
+                                  }) ;
         }
         public void DeleteProvider(int id)
         {
@@ -47,7 +49,9 @@ namespace TherapistDatabase.Models
                                      firstname = provider.FirstName,
                                      lastname = provider.LastName,
                                      age = provider.Age,
-                                     gender = provider.Gender,
+                                     gender = provider.Gender == GenderCategories.Male ? "Male"
+                                                : provider.Gender == GenderCategories.Female ? "Female"
+                                                : "Nonbinary",
                                      specialties = provider.Specialties,
                                      empid = provider.EmployeeID
                                  }) ;
