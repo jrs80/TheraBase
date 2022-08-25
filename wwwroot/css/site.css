@@ -22,13 +22,6 @@ body {
       
 }
 
-
-.btn {
-    color: white;
-    background-color: #FF3B3F;   /* watermelon (red) */
-    margin: 2px;
-}
-
 tr:nth-child(even) {
     background-color:  #CAEBF2; /* sky (blue) */
 }
@@ -44,7 +37,15 @@ a {
 
 .form-control {
     color: black;
+    padding: 10px, 10px, 5px, 5px;
+    margin: 10px, 10px, 5px, 5px;
 }
+.control-label {
+    padding: 10px, 10px, 5px, 5px;
+    margin: 10px, 10px, 5px, 5px;
+}
+
+
 .form-control::placeholder {
     color: lightgray;
 }
@@ -62,4 +63,37 @@ a {
 }
 .navbar-brand {
     color: #FF3B3F;
+}
+
+.photo_container {
+    width: 200px;
+    height:200px;
+    float:left;
+}
+.provider_photo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    max-width: 300px;
+    object-fit: cover;
+}
+.info_container {
+    margin-top: 50px;
+    margin-left: 200px;
+    color: black;
+    font-size: 20px;
+}
+
+
+.btn {
+    color: white;
+    background-color: #FF3B3F; /* watermelon (red) */
+    margin: 20px 2px 20px 2px;
+}
+
+.single_provider_table tr,td {
+    background-color: #e3f2fd;
+    width: 50px;
 }

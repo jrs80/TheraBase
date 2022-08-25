@@ -7,18 +7,70 @@
    
     <label asp-for="FirstName" class="control-label">First Name</label>
     <input type="text" name="FirstName" class="form-control" placeholder="@Model.FirstName" required />
-    
+    <br />
     <label asp-for="LastName" class="control-label">Last Name</label>
     <input type="text" name="LastName" class="form-control" required placeholder="@Model.LastName" />
-
-    <label asp-for="Specialties" class="control-label">Specialties</label>
-    <input type="text" name="Specialties" class="form-control" required placeholder="@Model.Specialties" />
-
+    <br />
+    <label asp-for="Specialties" class="control-label">Select Specialties:</label>
+    <select asp-for="Specialties" asp-items="TherapistDatabase.Models.SpecialtyListModel.Specs" required></select>
+     <br/>
     <label asp-for="Age" class="control-label">Age</label>
     <input type="number" step="1" name="Age" class="form-control" placeholder="@Model.Age" />
-
+         <br/>
     <select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderCategories>()" class="control-label" name="Gender">Gender:</select>
     <br />
+    
+    <div class="photo_container">
+        <img src=@Model.PhotoPath asp-append-version="true" class="provider_photo"
+         alt="Photo of Provider" />
+    </div>
 
-    <input type="submit" value="Update Provider" class="btn btn-primary" />
+    <label for="image_upload">Change Photo</label>
+    <input type="file" id="image_upload" name="image_upload" class="btn-sm" accept=".jpg, .jpeg, .png, image/jpeg, image/png">
+
+@*    <label asp-for="PhotoPath" class="control-label">Upload New Photo</label>
+    <br/>
+    <input type="file" name="PhotoPath" accept="image/png, image/jpeg">
+    <br />*@
+
+
+
+
+    <input type="submit" value="Update Provider" class="btn" />
 }
+
+Photo Location: @Model.PhotoPath
+
+
+<script>
+    const input = document.querySelector('#image_upload');
+    const photo = document.querySelector('.photo_container');
+    input.style.opacity = 0;
+
+    input.addEventListener('change',updatePhoto);
+    function updatePhoto() {
+        const file=input.files[0];
+        if(!validFileType(file)) { 
+            window.alert("Invalid file type."); 
+        }
+        else {
+            const image = document.querySelector('.provider_photo');
+            image.src = URL.createObjectURL(file);
+        }
+    }
+
+    const fileTypes = [
+        "image/apng",
+        "image/bmp",
+        "image/gif",
+        "image/jpeg",
+        "image/pjpeg",
+        "image/png",
+        "image/svg+xml",
+        "image/tiff",
+        "image/webp",
+        "image/x-icon"
+        ];
+    function validFileType(file) { return fileTypes.includes(file.type); }
+
+</script>

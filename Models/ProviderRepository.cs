@@ -13,7 +13,7 @@ namespace TherapistDatabase.Models
             dbConnection = conn;
         }
         public IEnumerable<Provider> GetAllProviders()
-            =>dbConnection.Query<Provider>("SELECT * FROM providers");
+            => dbConnection.Query<Provider>("SELECT * FROM providers");
 
         public Provider GetProvider(int id)
              => dbConnection.QuerySingleOrDefault<Provider>("SELECT * FROM providers WHERE employeeid=@empid", new { empid = id });
@@ -22,7 +22,7 @@ namespace TherapistDatabase.Models
         public void AddProvider(Provider newProv)
         {
             dbConnection.Execute("INSERT INTO providers (firstname, lastname, specialties, age, gender) " +
-                                 "VALUES (@firstName,@lastName,@specialties,@age,@gender)",
+                                 "VALUES (@firstName,@lastName,@specialties,@age,@gender,@photopath)",
                                   new
                                   {
                                       firstName = newProv.FirstName,
@@ -31,7 +31,8 @@ namespace TherapistDatabase.Models
                                       age = newProv.Age,
                                       gender = newProv.Gender == GenderCategories.Male ? "Male"
                                                 : newProv.Gender == GenderCategories.Female ? "Female"
-                                                : "Nonbinary"
+                                                : "Nonbinary",
+                                      photourl=newProv.PhotoPath
                                   }) ;
         }
         public void DeleteProvider(int id)
@@ -41,7 +42,7 @@ namespace TherapistDatabase.Models
         }
         public void UpdateProvider(Provider provider)
         {
-            dbConnection.Execute ("UPDATE providers " +
+            dbConnection.Execute("UPDATE providers " +
                                  "SET firstname=@firstname, lastname=@lastname, age=@age, gender=@gender, specialties=@specialties " +
                                  "WHERE employeeid=@empid",
                                  new
@@ -54,7 +55,7 @@ namespace TherapistDatabase.Models
                                                 : "Nonbinary",
                                      specialties = provider.Specialties,
                                      empid = provider.EmployeeID
-                                 }) ;
+                                 }); ;
         }
     }
 }

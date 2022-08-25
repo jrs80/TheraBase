@@ -9,8 +9,8 @@ namespace TherapistDatabase.Models
         public void AddProvider(Provider provider);
         public void UpdateProvider(Provider provider);
         public void DeleteProvider(int employeeID);
+
         //TODO: implement this:
-        //public IEnumerable<Therapist> GetTherapistsBySpecialty(); 
-        
+        //public IEnumerable<Therapist> GetTherapistsBySpecialty(SpecialtyList spec);
     }
 }
