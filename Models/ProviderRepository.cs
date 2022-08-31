@@ -7,6 +7,8 @@ namespace TherapistDatabase.Models
 {
     public class ProviderRepository : IProviderRepository
     {
+        
+              
         private readonly IDbConnection dbConnection;
         public ProviderRepository(IDbConnection conn)
         {
@@ -16,23 +18,34 @@ namespace TherapistDatabase.Models
             => dbConnection.Query<Provider>("SELECT * FROM providers");
 
         public Provider GetProvider(int id)
-             => dbConnection.QuerySingleOrDefault<Provider>("SELECT * FROM providers WHERE employeeid=@empid", new { empid = id });
+            => dbConnection.QuerySingleOrDefault<Provider>("SELECT * FROM providers WHERE employeeid=@empid", new { empid = id });
 
 
-        public void AddProvider(Provider newProv)
-        {
-            dbConnection.Execute("INSERT INTO providers (firstname, lastname, specialties, age, gender) " +
-                                 "VALUES (@firstName,@lastName,@specialties,@age,@gender,@photopath)",
+        public void AddProvider(Provider provider)
+        {  
+            dbConnection.Execute("INSERT INTO providers (firstname, lastname, specialties, age, gender, photopath) " +
+                                 "VALUES (@firstName,@lastName,@specialties,@age,@gender,@photourl)",
                                   new
                                   {
-                                      firstName = newProv.FirstName,
-                                      lastName = newProv.LastName,
-                                      specialties = newProv.Specialties,
-                                      age = newProv.Age,
-                                      gender = newProv.Gender == GenderCategories.Male ? "Male"
-                                                : newProv.Gender == GenderCategories.Female ? "Female"
+                                      firstName = provider.FirstName,
+                                      lastName = provider.LastName,
+                                      age = provider.Age,
+                                      gender = provider.Gender == GenderCategories.Male ? "Male"
+                                                : provider.Gender == GenderCategories.Female ? "Female"
                                                 : "Nonbinary",
-                                      photourl=newProv.PhotoPath
+                                        /*
+                                         * TODO: Make a dictionary for specialty values/display names
+                                         * and refer to it here to make this less ugly! 
+                                         */
+                                      specialties = provider.Specialties == SpecialtyCategories.Child ? "Child"
+                                        : provider.Specialties == SpecialtyCategories.Trauma ? "Trauma"
+                                        : provider.Specialties == SpecialtyCategories.Drug ? "Drug"
+                                        : provider.Specialties == SpecialtyCategories.Dep ? "Dep"
+                                        : provider.Specialties == SpecialtyCategories.Pers ? "Pers"
+                                        : provider.Specialties == SpecialtyCategories.ADHD ? "ADHD"
+                                        : "Other",
+
+                                      photourl =provider.PhotoPath
                                   }) ;
         }
         public void DeleteProvider(int id)
@@ -43,7 +56,7 @@ namespace TherapistDatabase.Models
         public void UpdateProvider(Provider provider)
         {
             dbConnection.Execute("UPDATE providers " +
-                                 "SET firstname=@firstname, lastname=@lastname, age=@age, gender=@gender, specialties=@specialties " +
+                                 "SET firstname=@firstname, lastname=@lastname, age=@age, gender=@gender, specialties=@specialties, photopath=@path " +
                                  "WHERE employeeid=@empid",
                                  new
                                  {
@@ -53,9 +66,22 @@ namespace TherapistDatabase.Models
                                      gender = provider.Gender == GenderCategories.Male ? "Male"
                                                 : provider.Gender == GenderCategories.Female ? "Female"
                                                 : "Nonbinary",
-                                     specialties = provider.Specialties,
-                                     empid = provider.EmployeeID
-                                 }); ;
+                                     
+                                     /*
+                                      * TODO: Make a dictionary for specialty values/display names
+                                      * and refer to it here to make this less ugly! 
+                                      */
+                                     specialties = provider.Specialties == SpecialtyCategories.Child? "Child"
+                                        : provider.Specialties == SpecialtyCategories.Trauma?"Trauma"
+                                        : provider.Specialties == SpecialtyCategories.Drug ? "Drug"
+                                        : provider.Specialties == SpecialtyCategories.Dep ? "Dep"
+                                        : provider.Specialties == SpecialtyCategories.Pers ? "Pers"
+                                        : provider.Specialties == SpecialtyCategories.ADHD ? "ADHD"
+                                        : "Other",
+                                     empid = provider.EmployeeID,
+                                     path=provider.PhotoPath
+                                 });
         }
+
     }
 }

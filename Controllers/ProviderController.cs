@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TherapistDatabase.Models;
+using System.Web;
+using System.Net.Http.Headers;
 
 namespace TherapistDatabase.Controllers
 {
@@ -23,8 +25,22 @@ namespace TherapistDatabase.Controllers
             return View(provider);
         }
                 
-        public IActionResult AddProviderToDatabase(Provider p)
+        public IActionResult AddProviderToDatabase(Provider p, List<IFormFile> files)
         {
+            long size = files.Sum(f => f.Length);
+            var filePaths = new List<string>();
+            foreach(var formFile in files) {
+                if(formFile.Length > 0) {
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", formFile.FileName);
+                    filePaths.Add(filePath);
+                    using(var stream = new FileStream(filePath, FileMode.Create)) {
+                        formFile.CopyTo(stream);                         //copy file to images directory using windows conventions
+                        p.PhotoPath = $"~/images/{formFile.FileName}";   //send file path info to db--stored with unix notation for display via html
+                    }
+
+                }
+            }
+
             repo.AddProvider(p);
             return RedirectToAction("Index");
         }
@@ -42,14 +58,23 @@ namespace TherapistDatabase.Controllers
             return View(p);
         }
 
-        [HttpPost]
-        public IActionResult UpdateProviderToDatabase(Provider provider)
+        public IActionResult UpdateProviderToDatabase(Provider p, List<IFormFile> files)
         {
+            long size = files.Sum(f => f.Length);
+            var filePaths = new List<string>();
+            foreach(var formFile in files) {
+                if(formFile.Length > 0) {
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", formFile.FileName);
+                    filePaths.Add(filePath);
+                    using(var stream = new FileStream(filePath, FileMode.Create)) {
+                        formFile.CopyTo(stream);                        //copy file to images directory using windows conventions
+                        p.PhotoPath = $"~/images/{formFile.FileName}";   //send file path info to db--stored with unix notation for display via html
+                    }
 
-            //old version:
-            repo.UpdateProvider(provider);
-            return RedirectToAction("ViewProvider", new { id = provider.EmployeeID });
+                }
+            }
+            repo.UpdateProvider(p);
+            return RedirectToAction("ViewProvider", new { id = p.EmployeeID });
         }
-        
     }
 }

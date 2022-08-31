@@ -24,8 +24,16 @@
         <td><a href=/Provider/ViewProvider/@p.EmployeeID>@p.EmployeeID</a></td>
         <td>@p.FirstName</td>
         <td>@p.LastName</td>
-        <td>@p.Specialties</td>
-@*        <td>@foreach(var s in p.Specialties) { @s }</td>*@
+        @switch(p.Specialties) {
+                case SpecialtyCategories.Drug: <td>Substance-Use Disorders</td>; break;
+                case SpecialtyCategories.Pers: <td>Personality Disorders</td>; break;
+                case SpecialtyCategories.Child: <td>Child and Family</td>; break;
+                case SpecialtyCategories.Trauma: <td>Trauma and PTSD</td>; break;
+                case SpecialtyCategories.Dep: <td>Depression and Anxiety</td>; break;
+                case SpecialtyCategories.ADHD: <td>ADHD, ADD, and Related</td>; break;
+                case SpecialtyCategories.Other: <td>Other</td>; break;
+                default: <td>None</td>; break;
+            }
         <td>@p.Age</td>
         <td>@p.Gender</td>
     </tr>

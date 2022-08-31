@@ -5,24 +5,31 @@ using System.Collections.Generic;
 
 namespace TherapistDatabase.Models
 {
-    public enum GenderCategories { Male, Female, Nonbinary };
-    
-    
-    /*public enum SpecialtyList
+    public enum GenderCategories {
+        [DisplayAttribute(Name = "Male")]
+        Male,
+        [DisplayAttribute(Name = "Female")]
+        Female,
+        [DisplayAttribute(Name = "Nonbinary")]
+        Nonbinary 
+    };
+
+    public enum SpecialtyCategories
     {
-        [Display(Name = "Depression & Anxiety")]
-        DepressionAndAnxiety,
-        [Display(Name = "Trauma & PTSD")]
-        TraumaAndPTSD,
-        [Display(Name = "Substance-Use Disorders")]
-        SubstanceUseDisorders,
-        [Display(Name = "Marriage & Family")]
-        MarriageAndFamily,
-        Other
-    };*/
-    
-
-
+        [DisplayAttribute(Name = "Child and Family")]
+        Child,  // "Child and Family"
+        [DisplayAttribute(Name = "Trauma and PTSD")]
+        Trauma, // "Trauma and PTSD"
+        [DisplayAttribute(Name = "Substance-Use Disorders")]
+        Drug,   // "Substance-Use Disorders"
+        [DisplayAttribute(Name = "Depression and Anxiety")]
+        Dep,    // "Depression and Anxiety"
+        [DisplayAttribute(Name = "ADHD, ADD, and Related")]
+        ADHD,
+        [DisplayAttribute(Name = "Personality Disorders")]
+        Pers,   // "Personality Disorders"
+        Other   // "Other"
+    };
 
     public class Provider
     {
@@ -30,20 +37,17 @@ namespace TherapistDatabase.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
        
-        public string Specialties { get; set; }
-        // public IEnumerable<string> Specialties { get; set; }
+        public SpecialtyCategories? Specialties { get; set; }  
+
         public int Age { get; set; }
         public GenderCategories Gender { get; set; }
         public string PhotoPath { get; set; }
+               
         public Provider()
         {
             FirstName = "Unknown";
             LastName = "Unknown";
-            Specialties = "Other";
             PhotoPath = "";
-            //Specialties = new List<string>();
-            //foreach(var spec in SpecialtyListModel.SpecList)
-            //    Specialties.Add(spec);
         }
     }
 }
