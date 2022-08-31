@@ -25,8 +25,7 @@
             <div class="form-group row">
                 <div class="form-group col">
                     <label asp-for="Gender" class="control-label">Gender:</label>
-                    <select asp-for="Gender" class="form-control" name="Gender" asp-items="Html.GetEnumSelectList<GenderCategories>()">
-                        @* No idea why this will not display "Click to select"--same code used below in Specialties, but does not work here...1? *@
+                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderCategories>()" class="form-control" name="Gender" >
                         <option value="" disabled selected hidden>Click to select</option>
                     </select>
                 </div>

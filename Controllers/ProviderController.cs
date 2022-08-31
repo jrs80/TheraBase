@@ -27,6 +27,10 @@ namespace TherapistDatabase.Controllers
                 
         public IActionResult AddProviderToDatabase(Provider p, List<IFormFile> files)
         {
+            
+            /* TODO: Add checking for file size, remove the stuff about multiple files, check if img is already in images directory before
+             *       copying, etc.  Same on UpdateProviderToDatabase below.
+             */
             long size = files.Sum(f => f.Length);
             var filePaths = new List<string>();
             foreach(var formFile in files) {

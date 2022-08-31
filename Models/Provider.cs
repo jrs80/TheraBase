@@ -40,7 +40,7 @@ namespace TherapistDatabase.Models
         public SpecialtyCategories? Specialties { get; set; }  
 
         public int Age { get; set; }
-        public GenderCategories Gender { get; set; }
+        public GenderCategories? Gender { get; set; }
         public string PhotoPath { get; set; }
                
         public Provider()
